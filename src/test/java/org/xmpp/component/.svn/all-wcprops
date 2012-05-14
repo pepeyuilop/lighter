@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/repos/!svn/ver/11647/tinder/trunk/src/test/java/org/xmpp/component
+END
+AbstractComponentRespondsToIQRequestsTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/repos/!svn/ver/11338/tinder/trunk/src/test/java/org/xmpp/component/AbstractComponentRespondsToIQRequestsTest.java
+END
+AbstractComponentIsConsumerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/!svn/ver/11338/tinder/trunk/src/test/java/org/xmpp/component/AbstractComponentIsConsumerTest.java
+END
+AbstractComponentServiceDiscovery.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/!svn/ver/11647/tinder/trunk/src/test/java/org/xmpp/component/AbstractComponentServiceDiscovery.java
+END
+DummyAbstractComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repos/!svn/ver/11523/tinder/trunk/src/test/java/org/xmpp/component/DummyAbstractComponent.java
+END
+ThrowExceptionOnGetComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/repos/!svn/ver/11336/tinder/trunk/src/test/java/org/xmpp/component/ThrowExceptionOnGetComponent.java
+END
+AbstractComponentTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/repos/!svn/ver/11647/tinder/trunk/src/test/java/org/xmpp/component/AbstractComponentTest.java
+END
+SlowRespondingThreadNameComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/!svn/ver/11334/tinder/trunk/src/test/java/org/xmpp/component/SlowRespondingThreadNameComponent.java
+END

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/repos/!svn/ver/11922/tinder/trunk/src/test/java/org/xmpp/packet
+END
+DomainPrepTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/DomainPrepTest.java
+END
+JIDCreationNodeTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/repos/!svn/ver/11876/tinder/trunk/src/test/java/org/xmpp/packet/JIDCreationNodeTest.java
+END
+JIDCreationResourceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/repos/!svn/ver/11876/tinder/trunk/src/test/java/org/xmpp/packet/JIDCreationResourceTest.java
+END
+BasicJIDTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/repos/!svn/ver/11922/tinder/trunk/src/test/java/org/xmpp/packet/BasicJIDTest.java
+END
+PacketAddressingTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/repos/!svn/ver/11714/tinder/trunk/src/test/java/org/xmpp/packet/PacketAddressingTest.java
+END
+PacketErrorApplicationConditionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/PacketErrorApplicationConditionTest.java
+END
+NodePrepTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/NodePrepTest.java
+END
+ResourcePrepTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/ResourcePrepTest.java
+END
+JIDEqualsHashCodeTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/JIDEqualsHashCodeTest.java
+END
+StringPrepCacheTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/StringPrepCacheTest.java
+END
+JIDCreationDomainTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/repos/!svn/ver/11876/tinder/trunk/src/test/java/org/xmpp/packet/JIDCreationDomainTest.java
+END
+JIDCachedBareAndFullJIDTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/JIDCachedBareAndFullJIDTest.java
+END
+JIDNodeEscapingTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/repos/!svn/ver/11687/tinder/trunk/src/test/java/org/xmpp/packet/JIDNodeEscapingTest.java
+END
+JIDDelimiterCharsTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/repos/!svn/ver/11919/tinder/trunk/src/test/java/org/xmpp/packet/JIDDelimiterCharsTest.java
+END
+JIDSerializabilityTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/repos/!svn/ver/11323/tinder/trunk/src/test/java/org/xmpp/packet/JIDSerializabilityTest.java
+END

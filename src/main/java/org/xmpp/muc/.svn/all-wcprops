@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc
+END
+Invitation.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc/Invitation.java
+END
+RoomConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc/RoomConfiguration.java
+END
+DestroyRoom.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc/DestroyRoom.java
+END
+LeaveRoom.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc/LeaveRoom.java
+END
+JoinRoom.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/repos/!svn/ver/11323/tinder/trunk/src/main/java/org/xmpp/muc/JoinRoom.java
+END
