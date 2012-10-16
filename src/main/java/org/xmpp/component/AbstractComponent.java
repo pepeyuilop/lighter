@@ -34,6 +34,7 @@ import org.xmpp.packet.Packet;
 import org.xmpp.packet.Presence;
 import org.xmpp.packet.IQ.Type;
 import org.xmpp.packet.PacketError.Condition;
+import org.xmpp.util.NamedThreadFactory;
 import org.xmpp.util.XMPPConstants;
 
 /**
@@ -132,7 +133,7 @@ public abstract class AbstractComponent implements Component {
 	/**
 	 * The pool of threads that will process the queue.
 	 */
-	private ThreadPoolExecutor executor;
+	protected ThreadPoolExecutor executor;
 
 	/**
 	 * The maximum number of threads that will process work for this component.
@@ -971,7 +972,7 @@ public abstract class AbstractComponent implements Component {
 		if (executor == null || executor.isShutdown()) {
 			executor = new ThreadPoolExecutor(maxThreadPoolSize,
 					maxThreadPoolSize, 60L, TimeUnit.SECONDS,
-					new LinkedBlockingQueue<Runnable>(maxQueueSize));
+					new LinkedBlockingQueue<Runnable>(maxQueueSize), new NamedThreadFactory("StrokeCore"));
 		}
 	}
 	
