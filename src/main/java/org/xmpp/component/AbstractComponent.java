@@ -87,7 +87,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_ITEMS = "http://jabber.org/protocol/disco#items";
-    public static boolean activeDiscoItems = true;
+    public boolean activeDiscoItems = true;
 
     /**
 	 * The XMPP 'service discovery info' namespace.
@@ -95,7 +95,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_INFO = "http://jabber.org/protocol/disco#info";
-    public static boolean activeDiscoInfo = true;
+    public boolean activeDiscoInfo = true;
 
     /**
 	 * The 'XMPP Ping' namespace
@@ -103,7 +103,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0199.html">XEP-0199</a>
 	 */
 	public static final String NAMESPACE_XMPP_PING = "urn:xmpp:ping";
-    public static boolean activeXmppPing = true;
+    public boolean activeXmppPing = true;
 
 
     /**
@@ -113,7 +113,7 @@ public abstract class AbstractComponent implements Component {
 	 */
 
 	public static final String NAMESPACE_LAST_ACTIVITY = "jabber:iq:last";
-    public static boolean activeLastActivity = true;
+    public boolean activeLastActivity = true;
 
 	/**
 	 * The 'Entity Time' namespace
@@ -121,7 +121,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0202.html">XEP-0202</a>
 	 */
 	public static final String NAMESPACE_ENTITY_TIME = "urn:xmpp:time";
-	public static boolean activeEntityTime = true;
+	public boolean activeEntityTime = true;
 
 	/**
 	 * The component manager to which this Component has been registered.
@@ -189,44 +189,44 @@ public abstract class AbstractComponent implements Component {
 		this.enforceIQResult = enforceIQResult;
 	}
 
-    public static boolean isActiveDiscoItems() {
+    public boolean isActiveDiscoItems() {
         return activeDiscoItems;
     }
 
-    public static void setActiveDiscoItems(boolean activeDiscoItems) {
-        AbstractComponent.activeDiscoItems = activeDiscoItems;
+    public void setActiveDiscoItems(boolean activeDiscoItems) {
+        this.activeDiscoItems = activeDiscoItems;
     }
 
-    public static boolean isActiveDiscoInfo() {
+    public boolean isActiveDiscoInfo() {
         return activeDiscoInfo;
     }
 
-    public static void setActiveDiscoInfo(boolean activeDiscoInfo) {
-        AbstractComponent.activeDiscoInfo = activeDiscoInfo;
+    public void setActiveDiscoInfo(boolean activeDiscoInfo) {
+        this.activeDiscoInfo = activeDiscoInfo;
     }
 
-    public static boolean isActiveLastActivity() {
+    public boolean isActiveLastActivity() {
         return activeLastActivity;
     }
 
-    public static void setActiveLastActivity(boolean activeLastActivity) {
-        AbstractComponent.activeLastActivity = activeLastActivity;
+    public void setActiveLastActivity(boolean activeLastActivity) {
+        this.activeLastActivity = activeLastActivity;
     }
 
-    public static boolean isActiveXmppPing() {
+    public boolean isActiveXmppPing() {
         return activeXmppPing;
     }
 
-    public static void setActiveXmppPing(boolean activeXmppPing) {
-        AbstractComponent.activeXmppPing = activeXmppPing;
+    public void setActiveXmppPing(boolean activeXmppPing) {
+        this.activeXmppPing = activeXmppPing;
     }
 
-    public static boolean isActiveEntityTime() {
+    public boolean isActiveEntityTime() {
         return activeEntityTime;
     }
 
-    public static void setActiveEntityTime(boolean activeEntityTime) {
-        AbstractComponent.activeEntityTime = activeEntityTime;
+    public void setActiveEntityTime(boolean activeEntityTime) {
+        this.activeEntityTime = activeEntityTime;
     }
 
     /**
@@ -252,7 +252,7 @@ public abstract class AbstractComponent implements Component {
 		final Packet copy = packet.createCopy();
 		
 		if (executor == null) {
-			
+		    startExecutor();
 		}
 		try {
 			executor.execute(new PacketProcessor(copy));
