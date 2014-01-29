@@ -87,7 +87,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_ITEMS = "http://jabber.org/protocol/disco#items";
-    public static boolean active_disco_items = true;
+    public static boolean activeDiscoItems = true;
 
     /**
 	 * The XMPP 'service discovery info' namespace.
@@ -95,7 +95,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_INFO = "http://jabber.org/protocol/disco#info";
-    public static boolean active_disco_info = true;
+    public static boolean activeDiscoInfo = true;
 
     /**
 	 * The 'XMPP Ping' namespace
@@ -103,7 +103,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0199.html">XEP-0199</a>
 	 */
 	public static final String NAMESPACE_XMPP_PING = "urn:xmpp:ping";
-    public static boolean active_xmpp_ping = true;
+    public static boolean activeXmppPing = true;
 
 
     /**
@@ -113,7 +113,7 @@ public abstract class AbstractComponent implements Component {
 	 */
 
 	public static final String NAMESPACE_LAST_ACTIVITY = "jabber:iq:last";
-    public static boolean active_last_activity = true;
+    public static boolean activeLastActivity = true;
 
 	/**
 	 * The 'Entity Time' namespace
@@ -121,7 +121,7 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0202.html">XEP-0202</a>
 	 */
 	public static final String NAMESPACE_ENTITY_TIME = "urn:xmpp:time";
-	public static boolean active_entity_time = true;
+	public static boolean activeEntityTime = true;
 
 	/**
 	 * The component manager to which this Component has been registered.
@@ -189,48 +189,47 @@ public abstract class AbstractComponent implements Component {
 		this.enforceIQResult = enforceIQResult;
 	}
 
-    public static boolean isActive_disco_items() {
-        return active_disco_items;
+    public static boolean isActiveDiscoItems() {
+        return activeDiscoItems;
     }
 
-    public static boolean isActive_xmpp_ping() {
-        return active_xmpp_ping;
+    public static void setActiveDiscoItems(boolean activeDiscoItems) {
+        AbstractComponent.activeDiscoItems = activeDiscoItems;
     }
 
-    public static void setActive_disco_items(boolean active_disco_items) {
-        AbstractComponent.active_disco_items = active_disco_items;
+    public static boolean isActiveDiscoInfo() {
+        return activeDiscoInfo;
     }
 
-    public static void setActive_disco_info(boolean active_disco_info) {
-        AbstractComponent.active_disco_info = active_disco_info;
+    public static void setActiveDiscoInfo(boolean activeDiscoInfo) {
+        AbstractComponent.activeDiscoInfo = activeDiscoInfo;
     }
 
-    public static boolean isActive_disco_info() {
-        return active_disco_info;
+    public static boolean isActiveLastActivity() {
+        return activeLastActivity;
     }
 
-    public static boolean isActive_entity_time() {
-        return active_entity_time;
+    public static void setActiveLastActivity(boolean activeLastActivity) {
+        AbstractComponent.activeLastActivity = activeLastActivity;
     }
 
-    public static void setActive_entity_time(boolean active_entity_time) {
-        AbstractComponent.active_entity_time = active_entity_time;
+    public static boolean isActiveXmppPing() {
+        return activeXmppPing;
     }
 
-    public static void setActive_xmpp_ping(boolean active_xmpp_ping) {
-        AbstractComponent.active_xmpp_ping = active_xmpp_ping;
-
+    public static void setActiveXmppPing(boolean activeXmppPing) {
+        AbstractComponent.activeXmppPing = activeXmppPing;
     }
 
-    public static boolean isActive_last_activity() {
-        return active_last_activity;
+    public static boolean isActiveEntityTime() {
+        return activeEntityTime;
     }
 
-    public static void setActive_last_activity(boolean active_last_activity) {
-        AbstractComponent.active_last_activity = active_last_activity;
+    public static void setActiveEntityTime(boolean activeEntityTime) {
+        AbstractComponent.activeEntityTime = activeEntityTime;
     }
 
-	/**
+    /**
 	 * Initialize the abstract component.
 	 * 
 	 * @see org.xmpp.component.Component#initialize(org.xmpp.packet.JID,
@@ -528,27 +527,27 @@ public abstract class AbstractComponent implements Component {
 		}
 		final Type type = iq.getType();
 		if (type == Type.get) {
-			if (NAMESPACE_DISCO_INFO.equals(namespace) && active_disco_info) {
+			if (NAMESPACE_DISCO_INFO.equals(namespace) && activeDiscoInfo) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleDiscoInfo() (packetId {}).",
 						getName(), iq.getID());
 				return handleDiscoInfo(iq);
-			} else if (NAMESPACE_DISCO_ITEMS.equals(namespace) && active_disco_items) {
+			} else if (NAMESPACE_DISCO_ITEMS.equals(namespace) && activeDiscoItems) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleDiscoItems() (packetId {}).",
 						getName(), iq.getID());
 				return handleDiscoItems(iq);
-			} else if (NAMESPACE_XMPP_PING.equals(namespace) && active_xmpp_ping) {
+			} else if (NAMESPACE_XMPP_PING.equals(namespace) && activeXmppPing) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handlePing() (packetId {}).", getName(), iq
 						.getID());
 				return handlePing(iq);
-			} else if (NAMESPACE_LAST_ACTIVITY.equals(namespace) && active_last_activity) {
+			} else if (NAMESPACE_LAST_ACTIVITY.equals(namespace) && activeLastActivity) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleLastActivity() (packetId {}).", getName(), iq
 						.getID());
 				return handleLastActivity(iq);
-			} else if (NAMESPACE_ENTITY_TIME.equals(namespace) && active_entity_time) {
+			} else if (NAMESPACE_ENTITY_TIME.equals(namespace) && activeEntityTime) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleEntityTime() (packetId {}).", getName(), iq
 						.getID());
