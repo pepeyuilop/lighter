@@ -16,6 +16,15 @@
 
 package org.xmpp.component;
 
+import org.dom4j.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xmpp.packet.*;
+import org.xmpp.packet.IQ.Type;
+import org.xmpp.packet.PacketError.Condition;
+import org.xmpp.util.NamedThreadFactory;
+import org.xmpp.util.XMPPConstants;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,19 +32,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import org.dom4j.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xmpp.packet.IQ;
-import org.xmpp.packet.JID;
-import org.xmpp.packet.Message;
-import org.xmpp.packet.Packet;
-import org.xmpp.packet.Presence;
-import org.xmpp.packet.IQ.Type;
-import org.xmpp.packet.PacketError.Condition;
-import org.xmpp.util.NamedThreadFactory;
-import org.xmpp.util.XMPPConstants;
 
 /**
  * This class provides a default {@link Component} implementation. Most of the
@@ -91,27 +87,33 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_ITEMS = "http://jabber.org/protocol/disco#items";
+    public static boolean active_disco_items = true;
 
-	/**
+    /**
 	 * The XMPP 'service discovery info' namespace.
 	 * 
 	 * @see <a href="http://xmpp.org/extensions/xep-0030.html">XEP-0030</a>
 	 */
 	public static final String NAMESPACE_DISCO_INFO = "http://jabber.org/protocol/disco#info";
+    public static boolean active_disco_info = true;
 
-	/**
+    /**
 	 * The 'XMPP Ping' namespace
 	 * 
 	 * @see <a href="http://xmpp.org/extensions/xep-0199.html">XEP-0199</a>
 	 */
 	public static final String NAMESPACE_XMPP_PING = "urn:xmpp:ping";
+    public static boolean active_xmpp_ping = true;
 
-	/**
+
+    /**
 	 * The 'Last Activity' namespace
 	 * 
 	 * @see <a href="http://xmpp.org/extensions/xep-0012.html">XEP-0012</a>
 	 */
+
 	public static final String NAMESPACE_LAST_ACTIVITY = "jabber:iq:last";
+    public static boolean active_last_activity = true;
 
 	/**
 	 * The 'Entity Time' namespace
@@ -119,7 +121,8 @@ public abstract class AbstractComponent implements Component {
 	 * @see <a href="http://xmpp.org/extensions/xep-0202.html">XEP-0202</a>
 	 */
 	public static final String NAMESPACE_ENTITY_TIME = "urn:xmpp:time";
-	
+	public static boolean active_entity_time = true;
+
 	/**
 	 * The component manager to which this Component has been registered.
 	 */
@@ -186,6 +189,47 @@ public abstract class AbstractComponent implements Component {
 		this.enforceIQResult = enforceIQResult;
 	}
 
+    public static boolean isActive_disco_items() {
+        return active_disco_items;
+    }
+
+    public static boolean isActive_xmpp_ping() {
+        return active_xmpp_ping;
+    }
+
+    public static void setActive_disco_items(boolean active_disco_items) {
+        AbstractComponent.active_disco_items = active_disco_items;
+    }
+
+    public static void setActive_disco_info(boolean active_disco_info) {
+        AbstractComponent.active_disco_info = active_disco_info;
+    }
+
+    public static boolean isActive_disco_info() {
+        return active_disco_info;
+    }
+
+    public static boolean isActive_entity_time() {
+        return active_entity_time;
+    }
+
+    public static void setActive_entity_time(boolean active_entity_time) {
+        AbstractComponent.active_entity_time = active_entity_time;
+    }
+
+    public static void setActive_xmpp_ping(boolean active_xmpp_ping) {
+        AbstractComponent.active_xmpp_ping = active_xmpp_ping;
+
+    }
+
+    public static boolean isActive_last_activity() {
+        return active_last_activity;
+    }
+
+    public static void setActive_last_activity(boolean active_last_activity) {
+        AbstractComponent.active_last_activity = active_last_activity;
+    }
+
 	/**
 	 * Initialize the abstract component.
 	 * 
@@ -200,6 +244,7 @@ public abstract class AbstractComponent implements Component {
 		// start the executor service.
 		startExecutor();
 	}
+
 
 	/**
 	 * @see org.xmpp.component.Component#processPacket(org.xmpp.packet.Packet)
@@ -483,27 +528,27 @@ public abstract class AbstractComponent implements Component {
 		}
 		final Type type = iq.getType();
 		if (type == Type.get) {
-			if (NAMESPACE_DISCO_INFO.equals(namespace)) {
+			if (NAMESPACE_DISCO_INFO.equals(namespace) && active_disco_info) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleDiscoInfo() (packetId {}).",
 						getName(), iq.getID());
 				return handleDiscoInfo(iq);
-			} else if (NAMESPACE_DISCO_ITEMS.equals(namespace)) {
+			} else if (NAMESPACE_DISCO_ITEMS.equals(namespace) && active_disco_items) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleDiscoItems() (packetId {}).",
 						getName(), iq.getID());
 				return handleDiscoItems(iq);
-			} else if (NAMESPACE_XMPP_PING.equals(namespace)) {
+			} else if (NAMESPACE_XMPP_PING.equals(namespace) && active_xmpp_ping) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handlePing() (packetId {}).", getName(), iq
 						.getID());
 				return handlePing(iq);
-			} else if (NAMESPACE_LAST_ACTIVITY.equals(namespace)) {
+			} else if (NAMESPACE_LAST_ACTIVITY.equals(namespace) && active_last_activity) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleLastActivity() (packetId {}).", getName(), iq
 						.getID());
 				return handleLastActivity(iq);
-			} else if (NAMESPACE_ENTITY_TIME.equals(namespace)) {
+			} else if (NAMESPACE_ENTITY_TIME.equals(namespace) && active_entity_time) {
 				log.trace("(serving component '{}') "
 						+ "Calling #handleEntityTime() (packetId {}).", getName(), iq
 						.getID());
@@ -701,11 +746,11 @@ public abstract class AbstractComponent implements Component {
 	 *         component.
 	 */
 	protected IQ handleLastActivity(IQ iq) {
-		final long uptime = (System.currentTimeMillis() - lastStartMillis) / 1000;
-		final IQ result = IQ.createResultIQ(iq);
-		result.setChildElement("query", NAMESPACE_LAST_ACTIVITY).addAttribute(
-				"seconds", Long.toString(uptime));
-		return result;
+        final long uptime = (System.currentTimeMillis() - lastStartMillis) / 1000;
+        final IQ result = IQ.createResultIQ(iq);
+        result.setChildElement("query", NAMESPACE_LAST_ACTIVITY).addAttribute(
+               "seconds", Long.toString(uptime));
+        return result;
 	}
 
 	/**
@@ -731,7 +776,7 @@ public abstract class AbstractComponent implements Component {
 		el.addElement("utc").setText(utc);
 		return result;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
